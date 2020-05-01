@@ -81,7 +81,7 @@
 		}
 		return scale
 	};
-	var body = document.getElementById("container");
+	var body = document.getElementById("impress-container");
 	var impressSupported = (pfx("perspective") !== null) && (body.classList) && (body.dataset);
 	if (!impressSupported) {
 		body.className += " impress-not-supported "
