@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    <title>impress</title>
     
-    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
-    <meta name="author" content="Bartek Szopka" />
+    <meta name="description" content="impress" />
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
     <!-- /*  impress    */ -->
     <link href="css/impress-demo.css" rel="stylesheet" />
     <link href="css/impress-common.css" rel="stylesheet" />
@@ -15,8 +19,9 @@
     
     <!-- quill -->
     <link href="css/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/highlight.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/monokai-sublime.css" />
+
     <script src="js/highlight.pack.js"></script>
     <script src="js/quill.min.js"></script>
     <script src="js/image-resize.min.js"></script>
@@ -24,81 +29,76 @@
 </head>
 
 <body>
-	<div id="edit-container">
-        <div id="quill">
-    	   <div id="toolbar"></div>
-    	   <div id="editor"></div>
+    <div id="style-panel">
+        <div class="input-groups" id="translate">
+            <h3>平移</h3>
+            <div class="input-group">
+                <span class="input-group-addon">X</span>
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step(this);" value="0">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">Y</span>
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step(this);" value="0">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">Z</span>
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step(this);" value="0">
+            </div>
+        </div>  
+
+        <div class="input-groups" id="rotate">
+            <h3>旋转</h3>
+            <div class="input-group">
+                <span class="input-group-addon">X</span>
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step(this);" value="0">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">Y</span>
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step(this);" value="0">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">Z</span>
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step(this);" value="0">
+            </div>
         </div>
 
-        <div id="edit-preview"></div>
+        <div class="input-groups" id="scale">
+            <h3>放缩</h3>
+            <div class="input-group">
+                <span class="input-group-addon">R</span>
+                <input type="number" max="10" min="0.1" step="0.1" class="form-control" id="data-scale" onkeyup="update_step(this);" value="1">
+            </div>    
+        </div>
+    </div>
 
-        <div id="style-panel"></div>
-	</div>
-	
-	<div id="tool">
-    	<button>编辑</button>
-    	<button>设置</button>
-    	<button>添加</button>
-	</div>
+    <div id="quill">
+        <div id="toolbar"></div>
+        <div id="editor"></div>
+    </div>
+    
+    <div id="tool">
+        <button>编辑</button>
+        <button>变换</button>
+        <button>添加</button>
+    </div>
 
-	<div id="impress-container">
-    	<div id="impress"
-    		data-transition-duration="1200"
-    		data-width="1024"
-    		data-height="768"
-    		data-max-scale="3"
-    		data-min-scale="0"
-    		data-perspective="1000"
-    	>
-	
-    	<div id="bored" class="step slide" data-x="-1000" data-y="-1500" data-autoplay="10">
-        	
-    	</div>
-	
-    	<div class="step slide" data-x="0" data-y="-1500">
+    <div id="impress-container">
+        <div id="impress"
+            data-transition-duration="1000"
+            data-width="1024"
+            data-height="768"
+            data-max-scale="3"
+            data-min-scale="0"
+            data-perspective="1000"
+        >
+    
+        <div class="step" data-y="-150"></div>
+        <div class="step" data-y="0"></div>
+        <div class="step" data-y="150"></div>        
+        <div id="overview" class="step" data-y="0" data-z="500" data-scale="2"></div>
+    
         
-    	</div>
-	
-    	<div class="step slide" data-x="1000" data-y="-1500">
-        	
-    	</div>
-	
-    	<div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-        	
-    	</div>
-	
-    	<div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-        	
-    	</div>
-	
-    	<div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        	
-    	</div>
-	
-    	<div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
-        	
-    	</div>
-	
-    	<div id="ing" class="step" data-x="3500" data-y="-850" data-z="0" data-rotate="270" data-scale="6">
-        
-    	</div>
-	
-    	<div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
-        	
-    	</div>
-	
-    	<div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-        	
-    	</div>
-	
-    	<div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
-        	
-    	</div>
-	
-    	<div id="its-in-3d" class="step" data-x="6200" data-y="4700" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2"></div>
-	
-    	<div id="overview" class="step" data-x="3000" data-y="1500" data-z="0" data-scale="10"></div>
-	</div>
+    </div>
 
 <script type="text/javascript" src="js/quill-setup.js"></script>
 <script src="js/edit.js"></script>

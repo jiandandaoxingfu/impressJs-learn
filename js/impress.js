@@ -1031,14 +1031,21 @@
 		var util = api.lib.util;
 		gc.addEventListener(document, "keydown", function(event) {
 			if( window.is_edit ) return;
-			if (event.key === "Escape") {
-				event.preventDefault();
-				exitFullscreen();
-				util.triggerEvent(root.querySelector(".active"), "impress:steprefresh")
-			}
-		}, false);
+			if ( event.code === "F4" ) {
+                event.preventDefault();
+                enterFullscreen();
+                util.triggerEvent( root.querySelector( ".active" ), "impress:steprefresh" );
+            }
+
+            // 27 (Escape) is sent by presentation remote controllers
+            if ( event.key === "Escape" || event.key === "F4" ) {
+                event.preventDefault();
+                exitFullscreen();
+                util.triggerEvent( root.querySelector( ".active" ), "impress:steprefresh" );
+            }
+        }, false );
 		util.triggerEvent(document, "impress:help:add", {
-			command: "F5 / ESC",
+			command: "F4 / ESC",
 			text: "Fullscreen: Enter / Exit",
 			row: 200
 		})
