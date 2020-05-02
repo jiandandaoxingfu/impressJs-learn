@@ -13,7 +13,7 @@ body, .step {
 	position: absolute;
 	top: 0%;
 	left: -30%;
-	width: 30%;
+	width: 60%;
 	height: 100%;
 	overflow: hidden;
 	z-index: 4;
@@ -28,6 +28,16 @@ body, .step {
 .ql-formats {
 	margin-top: 5px;
 }
+
+#impress {
+	transition: left 0.5s, transform 0.5s !important;
+}
+
+.impress-editing {
+	left: 78% !important;
+	transform: scale(0.5) !important;
+}
+
 
 #style-panel {
 	position: absolute;
@@ -62,8 +72,6 @@ body, .step {
 
 
 
-
-
 #tool {
 	position: fixed !important;
 	right: 10px;
@@ -71,15 +79,14 @@ body, .step {
 	width: 52px;
 	display: grid;
   	grid-template-columns: 50px;
-  	grid-template-rows: 50px 50px 50px;
-  	grid-row-gap: 10px;
+  	grid-template-rows: 50px 50px 50px 50px;
+  	grid-row-gap: 20px;
   	z-index: 3;
 }
 #tool button {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
-	margin-bottom: 25px;
 	text-align: center;
 	font-size: 16px;
 	line-height: 50px;
@@ -129,4 +136,16 @@ html, body, #impress-container {
 .step code, pre {
     background-color: #f0f0f0;
     border-radius: 3px;
+}
+
+.step video, .ql-video video {
+	display: block;
+	position: relative;
+	left: 0;
+	right: 0;
+	margin: 10px auto;
+	width: 400px;
+	height: 320px;
+	transition: opacity 0.8s;
+	opacity: 0;
 }

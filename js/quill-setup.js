@@ -3,7 +3,7 @@ hljs.configure({
 });
 
 var toolbarOptions = [
-	[{ 'size': ['10px', '12px', false, '16px' ,'18px', '20px', '22px', '24px', '26px', '32px', '48px'] }],  // custom
+	[{ 'size': ['10px', '12px', "14px", '16px', "18px", '20px', '22px', '24px', '26px', '32px', '48px', "60px", "72px", "96px", "144px"] }],  // custom
 	[{ 'font': ['SimSun', 'SimHei','Microsoft-YaHei','KaiTi','FangSong','Arial','Times-New-Roman','sans-serif'] }],
   	['bold', 'italic', 'underline', 'strike'],        // toggled buttons
   	['blockquote', 'code-block'],
@@ -12,10 +12,19 @@ var toolbarOptions = [
   	[{ 'align': [] }],
   	['link', 'image', 'video', 'formula'],
 ];
-var editor = new Quill('#editor', {
-	debug: 'info',
+var quill = new Quill('#editor', {
   	modules: {
-    	toolbar: toolbarOptions,
+    	toolbar: {
+    		container: toolbarOptions,
+    		handlers: {
+    			'video': function() {
+    				let url = prompt("输入地址");
+    				let range = this.quill.getSelection();
+    				let index = range === null ? 0 : range.index;
+    				this.quill.insertEmbed(index, 'video', url);
+    			}
+    		}
+    	},
     	imageDrop: true,
     	syntax: true,
     	imageResize: {

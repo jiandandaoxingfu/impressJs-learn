@@ -72,7 +72,6 @@
     </div>
 
     <div id="quill">
-        <div id="toolbar"></div>
         <div id="editor"></div>
     </div>
     
@@ -80,6 +79,7 @@
         <button>编辑</button>
         <button>变换</button>
         <button>添加</button>
+        <button>保存</button>
     </div>
 
     <div id="impress-container">
@@ -91,13 +91,14 @@
             data-min-scale="0"
             data-perspective="1000"
         >
-    
-        <div class="step" data-y="-150"></div>
-        <div class="step" data-y="0"></div>
-        <div class="step" data-y="150"></div>        
-        <div id="overview" class="step" data-y="0" data-z="500" data-scale="2"></div>
-    
-        
+
+        <div class="step" data-y="-300"></div>
+        <div class="step" data-y="0"></div> 
+        <div class="step" data-y="300"></div>
+       
+        <div class="step" data-y="0" data-x="-600"></div>
+        <div class="step" data-y="0" data-x="600"></div>
+        <div id="overview" class="step" data-x="0" data-y="0" data-z="1000" data-scale="2"></div>
     </div>
 
 <script type="text/javascript" src="js/quill-setup.js"></script>

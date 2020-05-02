@@ -4,7 +4,7 @@
 * Copyright (c) 2013, salesforce.com*/
 .ql-container {
 	box-sizing: border-box;
-	font-family: Helvetica,Arial,sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	height: 100%;
 	margin: 0;
@@ -505,6 +505,18 @@
 .ql-editor .ql-size-48px {
 	font-size: 48px
 }
+.ql-editor .ql-size-60px {
+	font-size: 60px
+}
+.ql-editor .ql-size-72px {
+	font-size: 72px
+}
+.ql-editor .ql-size-96px {
+	font-size: 96px
+}
+.ql-editor .ql-size-144px {
+	font-size: 144px
+}
 
 .ql-editor .ql-direction-rtl {
 	direction: rtl;
@@ -1000,11 +1012,11 @@
 }
 
 .ql-snow .ql-picker.ql-size {
-	width: 74px
+	width: 50px
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label::before,.ql-snow .ql-picker.ql-size .ql-picker-item::before {
-	content: '14'
+	content: '18'
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="10px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="10px"]::before {
@@ -1050,49 +1062,17 @@
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="48px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="48px"]::before {
 	content: '48'
 }
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="10px"]::before {
-	font-size: 10px
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="60px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="60px"]::before {
+	content: '60'
 }
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="12px"]::before {
-	font-size: 12px
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="72px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="72px"]::before {
+	content: '72'
 }
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="14px"]::before {
-	font-size: 14px
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="96px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="96px"]::before {
+	content: '96'
 }
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="16px"]::before {
-	font-size: 16px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18px"]::before {
-	font-size: 18px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="20px"]::before {
-	font-size: 20px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="22px"]::before {
-	font-size: 22px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="24px"]::before {
-	font-size: 24px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="26px"]::before {
-	font-size: 26px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="32px"]::before {
-	font-size: 32px
-}
-
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="48px"]::before {
-	font-size: 48px
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="144px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="144px"]::before {
+	content: '144'
 }
 
 .ql-snow .ql-color-picker.ql-background .ql-picker-item {
