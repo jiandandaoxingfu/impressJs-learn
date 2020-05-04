@@ -7,6 +7,8 @@
     <title>impress</title>
     
     <meta name="description" content="impress" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery-3.4.1.slim.min.js"></script>
@@ -26,6 +28,23 @@
     <script src="js/quill.min.js"></script>
     <script src="js/image-resize.min.js"></script>
     <script src="js/image-drop.min.js"></script>
+    
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                messageStyle: 'none',
+                tex2jax: {
+                    inlineMath: [['$','$']]
+                },
+                "HTML-CSS": {
+                    scale: 80
+                },
+                TeX: { 
+                    equationNumbers: { }
+                }
+            });
+        </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default"></script>
 </head>
 
 <body>
@@ -34,15 +53,15 @@
             <h3>平移</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>  
 
@@ -50,15 +69,15 @@
             <h3>旋转</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this);" value="0">
+                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>
 
@@ -66,7 +85,7 @@
             <h3>放缩</h3>
             <div class="input-group">
                 <span class="input-group-addon">R</span>
-                <input type="number" max="10" min="0.1" step="0.1" class="form-control" id="data-scale" onkeyup="update_step_style(this);" value="1">
+                <input type="number" max="10" min="0.1" step="0.1" class="form-control" id="data-scale" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="1">
             </div>    
         </div>
     </div>
@@ -74,11 +93,37 @@
     <div id="quill">
         <div id="editor"></div>
     </div>
+
+    <div id="formula-editor">
+        <textarea id='input' oninput="latex_render();" placeholder="输入"></textarea>
+        <div id='output'>预览</div>
+        <div id="buffer"></div>
+    </div>
     
+    <div id="video-select">
+        <div class="input-groups" id="insert-video">
+            <h3>插入视频</h3>
+            <div class="input-group">
+                <span class="input-group-addon">名称</span>
+                <input type="text" class="form-control" name="video-title">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">地址</span>
+                <input type="text" class="form-control" name="url">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">或者</span>
+                <input type="file" class="form-control" name="filename">
+            </div>
+            <div class="select-file" tabindex="0">选择文件</div>
+        </div>
+
+    </div>
+
     <div id="tool">
         <button>编辑</button>
         <button>变换</button>
-        <button>添加</button>
+        <button id="add-slide">添加</button>
         <button>保存</button>
     </div>
 
@@ -93,7 +138,7 @@
         >
 
         <div class="step" data-y="-300"></div>
-        <div class="step" data-y="0"></div> 
+        <div class="step" data-y="0"></div>
         <div class="step" data-y="300"></div>
        
         <div class="step" data-y="0" data-x="-600"></div>

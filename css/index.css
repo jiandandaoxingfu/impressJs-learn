@@ -1,15 +1,18 @@
-* {
+:not(u), :not(s) {
 	text-decoration: none;
 	outline: none;
 }
+
 body, .step {
 	cursor: pointer !important;
 }
 .step {
 	box-shadow: 0 0 3px red;
+	word-wrap: break-all;
 }
 .style-active {
 	box-shadow: 0 0 10px red;
+	transition: box-shadow 0.5s !important;
 }
 
 #quill {
@@ -23,6 +26,10 @@ body, .step {
 	transition: left 0.5s;
 	cursor: pointer;
 	background-color: rgba(255, 255, 255, 0.7);
+}
+#qull .ql-toolbar {
+	position: relative !important;
+	top: 0 !important;
 }
 #quill #editor {
 	height: 100%;
@@ -54,36 +61,38 @@ body, .step {
 
 .impress-editing #impress .step {
 	position: relative;
-	width: 100%;
-	box-shadow: 0 0 1px black;
+	width: 900px;
+	box-shadow: 0 0 5px black;
 	transition: box-shadow 0.3s;
+	margin-top: 30px;
 }
 
 .impress-editing #impress .active {
-	box-shadow: 0 0 3px red;	
+	box-shadow: 0 0 5px red;	
 }
 
 #style-panel {
 	position: absolute;
-	top: 100%;
-	left: 70%;
+	bottom: -165px;
+	right: 0;
 	width: 30%;
-	height: 28%;
+	height: 165px;
+	min-width: 400px;
 	background-color: rgba(255, 255, 255, 0.7);
-	border-radius: 5px;
-	transition: top 0.3s;
+	border-radius: 5px 0 0 0;
+	transition: bottom 0.3s;
 }
 
 #style-panel .input-groups {
 	float: left;
 }
-.input-groups .input-group {
+#style-panel .input-groups .input-group {
 	margin: 10px;
 	width: 105px;
 }
 
 #translate .input-group {
-	width: 120px;
+	width: 120px !important;
 }
 
 .input-groups h3 {
@@ -129,6 +138,9 @@ body, .step {
 #tool button:active {
 	background-color: white;
 	box-shadow: 0px 0px 10px white;
+}
+#tool #add-slide {
+	display: none;
 }
 
 html, body, #impress-container {
@@ -180,4 +192,97 @@ p.ql-video {
 }
 .step p, .ql-editor p {
 	padding: 5px 0;
+	font-size: 18px;
+	font-family: 'Microsoft-YaHei';
+}
+
+
+
+#formula-editor {
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 600px;
+	height: 500px;
+	margin: 0 auto;
+	z-index: -1;
+	border-radius: 10px;
+	box-shadow: 0 0 15px black;
+	font-size: 13px;
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+#formula-editor #input,  #formula-editor #output {
+	height: 50%;
+	width: 100%;
+	border-radius: 10px 10px 0px 0px;
+	padding: 20px;
+	border: 15px solid white;
+	background-color: #f0f0f0;
+}
+#formula-editor #output {
+	border-radius: 0px 0px 10px 10px;
+	overflow: scroll;
+}
+
+#formula-editor #buffer {
+	display: none;
+}
+
+
+#video-select {
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 300px;
+	height: 190px;
+	margin: 0 auto;
+	z-index: -1;
+	border-radius: 5px;
+	box-shadow: 0 0 15px black;
+	font-size: 13px;
+	transition: opacity 0.5s;
+	opacity: 0;
+	background-color: white;
+	padding: 15px;
+}
+
+input[name="filename"] {
+	z-index: 3;
+	opacity: 0;
+}
+#insert-video .input-group {
+	margin: 10px 0;
+}
+.select-file {
+	position: relative;
+	top: -44px;
+    left: 53px;
+    width: 217px;
+    height: 34px;
+    background-color: white;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    padding: 6px 12px;
+    font-size: 15px;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0px 4px 4px 0;
+    text-align: center;
+}
+.video-title {
+	display: block;
+	margin: 8px;
+	text-align: center;
+}
+
+.ql-editor ol>li, .ql-editor ul>li {
+	padding: 10px;
+}
+
+.ql-syntax {
+	font-size: 25px !important;
 }

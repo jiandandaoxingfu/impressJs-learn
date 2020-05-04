@@ -917,7 +917,7 @@
 		var gc = api.lib.gc;
 		var util = api.lib.util;
 		gc.addEventListener(document, "keydown", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			if (event.keyCode === 66 || event.keyCode === 190) {
 				event.preventDefault();
 				if (!blackedOut) {
@@ -928,7 +928,7 @@
 			}
 		}, false);
 		gc.addEventListener(document, "keyup", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			if (event.keyCode === 66 || event.keyCode === 190) {
 				event.preventDefault()
 			}
@@ -995,11 +995,11 @@
 			for (var i = 0; i < elements.length; i++) {
 				var e = elements[i];
 				gc.addEventListener(e, "keydown", function(event) {
-					if( window.is_edit ) return;
+					if( window.is_edit || window.is_style ) return;
 					event.stopPropagation()
 				});
 				gc.addEventListener(e, "keyup", function(event) {
-					if( window.is_edit ) return;
+					if( window.is_edit || window.is_style ) return;
 					event.stopPropagation()
 				})
 			}
@@ -1030,7 +1030,7 @@
 		var gc = api.lib.gc;
 		var util = api.lib.util;
 		gc.addEventListener(document, "keydown", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			if ( event.code === "F4" ) {
                 event.preventDefault();
                 enterFullscreen();
@@ -1178,7 +1178,7 @@
 		}
 	};
 	document.addEventListener("keyup", function(event) {
-		if( window.is_edit ) return;
+		if( window.is_edit || window.is_style ) return;
 		if (event.keyCode === 72 || event.keyCode === 191) {
 			event.preventDefault();
 			toggleHelp()
@@ -1407,13 +1407,13 @@
 				window = consoleWindow
 			}
 			window.document.addEventListener('keydown', function(event) {
-				if( window.is_edit ) return;
+				if( window.is_edit || window.is_style ) return;
 				if (!event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && keyCodes.indexOf(event.keyCode) !== -1) {
 					event.preventDefault()
 				}
 			}, false);
 			window.document.addEventListener('keyup', function(event) {
-				if( window.is_edit ) return;
+				if( window.is_edit || window.is_style ) return;
 				if (!event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && keyCodes.indexOf(event.keyCode) !== -1) {
 					handler();
 					event.preventDefault()
@@ -1790,7 +1790,7 @@
 		document.body.classList.add("impress-mouse-timeout")
 	};
 	var show = function() {
-		if( window.is_edit ) return;
+		if( window.is_edit || window.is_style ) return;
 		if (timeoutHandle) {
 			window.clearTimeout(timeoutHandle)
 		}
@@ -1831,13 +1831,13 @@
 			}
 		};
 		gc.addEventListener(document, "keydown", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			if (isNavigationEvent(event)) {
 				event.preventDefault()
 			}
 		}, false);
 		gc.addEventListener(document, "keyup", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			if (isNavigationEvent(event)) {
 				if (event.shiftKey) {
 					switch (event.keyCode) {
@@ -1865,7 +1865,7 @@
 			}
 		}, false);
 		gc.addEventListener(document, "click", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			var target = event.target;
 			try {
 				while ((target.tagName !== "A") && (target !== document.documentElement)) {
@@ -1889,7 +1889,7 @@
 			}
 		}, false);
 		gc.addEventListener(document, "click", function(event) {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			var target = event.target;
 			try {
 				while (!(target.classList.contains("step") && !target.classList.contains("active")) && (target !== document.documentElement)) {
@@ -1951,7 +1951,7 @@
 		var nextHtml = '<button id="impress-navigation-ui-next" title="Next" class="impress-navigation-ui">&gt;</button>';
 		prev = makeDomElement(prevHtml);
 		prev.addEventListener('click', function() {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			api.prev()
 		});
 		select = makeDomElement(selectHtml);
@@ -1965,7 +1965,7 @@
 		});
 		next = makeDomElement(nextHtml);
 		next.addEventListener('click', function() {
-			if( window.is_edit ) return;
+			if( window.is_edit || window.is_style ) return;
 			api.next()
 		});
 		triggerEvent(toolbar, 'impress:toolbar:appendChild', {
@@ -1982,7 +1982,7 @@
 		})
 	};
 	document.addEventListener('impress:navigation-ui:hideStep', function(event) {
-		if( window.is_edit ) return;
+		if( window.is_edit || window.is_style ) return;
 		hideSteps.push(event.target);
 		if (select) {
 			select.innerHTML = selectOptionsHtml()

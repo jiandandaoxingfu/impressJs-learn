@@ -107,7 +107,7 @@ a:hover,a:focus {
 
 .impress-enabled .step {
 	margin: 0;
-	opacity: .1;
+	opacity: .15;
 	-webkit-transition: opacity 1s;
 	-moz-transition: opacity 1s;
 	-ms-transition: opacity 1s;
