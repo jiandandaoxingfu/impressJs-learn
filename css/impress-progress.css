@@ -1,0 +1,23 @@
+/*
+    page footer style, for function showPage
+ */
+footer{
+    position: fixed;
+    bottom: 10px;
+    height: 30px;
+    text-align: center;
+    width: 100px;
+    left: calc(50% - 50px);
+    font-size: 20px;
+    font-weight: 200;
+}
+/*
+    page header progress style, for function showProgress
+ */
+header{
+    position: fixed;
+    top: 0;
+    height: 5px;
+    background-color: #3879d9;
+    transition: width 0.3s;
+}

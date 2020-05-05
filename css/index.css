@@ -107,13 +107,12 @@ body, .step {
 
 #tool {
 	position: fixed !important;
+	top: 50%;
+	transform: translateY(-50%);
 	right: 20px;
-	top: 30%;
 	width: 52px;
-	display: grid;
-  	grid-template-columns: 50px;
-  	grid-template-rows: 50px 50px 50px 50px;
-  	grid-row-gap: 20px;
+  	display: flex;
+  	flex-direction: column;
   	z-index: 3;
 }
 #tool button {
@@ -130,6 +129,7 @@ body, .step {
 	text-decoration: none;
 	border: none;
 	background: none;
+	margin-bottom: 20px;
 }
 #tool button:hover {
 	background-color: rgba(255, 255, 255, 0.6);
@@ -139,7 +139,7 @@ body, .step {
 	background-color: white;
 	box-shadow: 0px 0px 10px white;
 }
-#tool #add-slide {
+#tool #insert-slide, #remove-slide {
 	display: none;
 }
 
@@ -285,4 +285,10 @@ input[name="filename"] {
 
 .ql-syntax {
 	font-size: 25px !important;
+}
+
+#progress-bar {
+	position: absolute;
+	bottom: 5px;
+	left: 10%;
 }

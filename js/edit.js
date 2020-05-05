@@ -30,7 +30,10 @@ $$('style-panel').style.bottom = '-165px';
 
 function quill_change_view() {
 	if( $$('style-panel').style.bottom === "0px" ) style_panel_change_view();
-	if( $('.active')[0].id === "overview" ) return;
+	if( $('.active')[0].id === "overview" ) {
+		$$('overview').classList.remove('active');
+		$(".step")[0].classList.add('active');
+	}
 	let left = $$('quill').style.left;
 	$$('quill').style.left = left === "-60%" ? 0 : "-60%";
 	window.is_edit = !window.is_edit;
@@ -39,10 +42,12 @@ function quill_change_view() {
 		$$('impress-container').className = 'impress-editing';
 		impress().tear();
 		$('.step')[active_slide_index].classList.add('active');
-		$$('add-slide').style.display = 'block';
+		$$('insert-slide').style.display = 'block';
+		$$('remove-slide').style.display = 'block';
 	} else {
 		$$('impress-container').className = "none";
-		$$('add-slide').style.display = 'none';
+		$$('insert-slide').style.display = 'none';
+		$$('remove-slide').style.display = 'none';
 		impress().init();
 		impress().goto($('.step')[active_slide_index]);
 	}
@@ -78,6 +83,37 @@ function close_quill_and_style_panel() {
 	if( $$('style-panel').style.bottom === "0px" ) style_panel_change_view();
 }
 
+function insert_slide() {
+	let active_slide = $('.active')[0];
+	$('<div class="step"></div>').insertAfter(active_slide);
+	let insert_slide = active_slide.nextElementSibling;
+	insert_slide.classList.add('active');
+	insert_slide.setAttribute('data-x', Math.round( Math.random() * 2000 - 1000 ) );
+	insert_slide.setAttribute('data-y', Math.round( Math.random() * 600 - 300 ) );
+	insert_slide.setAttribute('data-z', 0 );
+	active_slide.classList.remove('active');
+}
+
+function remove_slide() {
+	if( $('.step').length === 2 ) return;
+	let active_slide = $('.active')[0];
+	let next_slide = active_slide.nextElementSibling || active_slide.previousElementSibling;
+	if( next_slide.id === 'overview' ) next_slide = active_slide.previousElementSibling;
+	$$('impress').removeChild(active_slide);
+	next_slide.classList.add('active');
+}
+
+function save() {
+	document.body.removeChild( $('footer')[0] );
+	document.body.removeChild( $('header')[0] );
+	impress().tear();
+}
+
+function update_page_number() {
+	let active_slide = $(".style-active")[0] || $('.active')[0];
+	let index = $("#impress .step").index(active_slide) + 1;
+	$('footer')[0].innerText = index + '/' + ($("#impress .step").length - 1);
+}
 document.addEventListener('click', e => {
 	let ele = e.target,
 		cn = ele.className || '',
@@ -92,19 +128,23 @@ document.addEventListener('click', e => {
 		edit();
 	} else if( action === "变换" ) {
 		style_panel_change_view();
-	} else if( action === "添加" ) {
-		if( window.is_edit ) {
-			$('<div class="step"></div>').insertAfter($('.active')[0])
-		}
+	} else if( action === "插入" ) {
+		insert_slide();
+		update_page_number();
+	} else if( action === "删除" ) {
+		remove_slide();
+		update_page_number();
 	} else if( action === "保存" ) {
-
+		save();
 	} else if ( window.is_edit && slide_with_ele.length ) { // 编辑幻灯片内容时，点击幻灯片进行切换。
 		$('.active')[0].className = 'step';
 		slide_with_ele[0].className = "step active";
+		update_page_number();
 		edit();
-	} else if( window.is_style && slide_with_ele.length ) {
+	} else if( window.is_style && slide_with_ele.length ) { // 编辑幻灯片样式时，点击幻灯片进行切换。
 		$('.style-active')[0].classList.remove('style-active');
 		slide_with_ele[0].classList.add('style-active');
+		update_page_number();
 		update_style_panel();
 	}
 })
@@ -129,9 +169,9 @@ document.body.onkeydown = function(e) {
 		} else if( keyCode === 84 ) {
 			style_panel_change_view();
 		} else if( keyCode === 73 ) {
-
+			insert_slide();
 		} else if( keyCode === 83 ) {
-
+			remove_slide();
 		}
 	}
 }
