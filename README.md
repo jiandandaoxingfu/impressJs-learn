@@ -16,3 +16,6 @@
 - alt + r：删除幻灯片
 - alt + s：保存文件。
 - 双击公式：重新编辑。
+
+## 参考资料
+- [页码和进度条](https://github.com/impress/impress.js/pull/487/commits/cff83a9874bcc586cde66345d4134e014aff2b1f), [yalishizhude](https://github.com/yalishizhude).

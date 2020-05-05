@@ -1,148 +1,14 @@
-:not(u), :not(s) {
-	text-decoration: none;
-	outline: none;
+* {
+	/*text-decoration: none !important;*/
+	outline: none !important;
+}
+u {
+	text-decoration: underline !important;
+}
+s {
 }
 
-body, .step {
-	cursor: pointer !important;
-}
-.step {
-	box-shadow: 0 0 3px red;
-	word-wrap: break-all;
-}
-.style-active {
-	box-shadow: 0 0 10px red;
-	transition: box-shadow 0.5s !important;
-}
-
-#quill {
-	position: absolute;
-	top: 0%;
-	left: -60%;
-	width: 60%;
-	height: 100%;
-	overflow: hidden;
-	z-index: 4;
-	transition: left 0.5s;
-	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.7);
-}
-#qull .ql-toolbar {
-	position: relative !important;
-	top: 0 !important;
-}
-#quill #editor {
-	height: 100%;
-	overflow-x: scroll;
-}
-.ql-formats {
-	margin-top: 5px;
-}
-
-#impress {
-	transition: left 0.5s, transform 0.5s !important;
-}
-
-.impress-editing {
-	position: absolute;
-	left: 60% !important;
-	width: 40% !important;
-	height: 100% !important;
-	overflow-y: scroll !important;
-}
-
-.impress-editing #impress {
-	position: absolute;
-	left: 1%;
-	right: 1%;
-	width: 98% !important;
-	height: 100% !important;
-}
-
-.impress-editing #impress .step {
-	position: relative;
-	width: 900px;
-	box-shadow: 0 0 5px black;
-	transition: box-shadow 0.3s;
-	margin-top: 30px;
-}
-
-.impress-editing #impress .active {
-	box-shadow: 0 0 5px red;	
-}
-
-#style-panel {
-	position: absolute;
-	bottom: -165px;
-	right: 0;
-	width: 30%;
-	height: 165px;
-	min-width: 400px;
-	background-color: rgba(255, 255, 255, 0.7);
-	border-radius: 5px 0 0 0;
-	transition: bottom 0.3s;
-}
-
-#style-panel .input-groups {
-	float: left;
-}
-#style-panel .input-groups .input-group {
-	margin: 10px;
-	width: 105px;
-}
-
-#translate .input-group {
-	width: 120px !important;
-}
-
-.input-groups h3 {
-	display: block;
-	clear: both;
-	font-size: 20px;
-	font-family: 'kaiti';
-	margin: 5px;
-}
-
-
-
-#tool {
-	position: fixed !important;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 20px;
-	width: 52px;
-  	display: flex;
-  	flex-direction: column;
-  	z-index: 3;
-}
-#tool button {
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
-	text-align: center;
-	font-size: 16px;
-	line-height: 50px;
-	transition: all 0.3s;
-	user-select: none;
-	box-shadow: 0px 0px 10px black;
-	outline: none;
-	text-decoration: none;
-	border: none;
-	background: none;
-	margin-bottom: 20px;
-}
-#tool button:hover {
-	background-color: rgba(255, 255, 255, 0.6);
-	box-shadow: 0 0 5px black;
-}
-#tool button:active {
-	background-color: white;
-	box-shadow: 0px 0px 10px white;
-}
-#tool #insert-slide, #remove-slide {
-	display: none;
-}
-
+/*幻灯片*/
 html, body, #impress-container {
 	height: 100%;
 	width: 100%;
@@ -151,12 +17,19 @@ html, body, #impress-container {
 	overflow: hidden;
 }
 
-
-.ql-picker-item:hover {
-	box-shadow: 0 0 4px blue;
+body, .step {
+	cursor: pointer !important;
 }
 
+.step {
+	box-shadow: 0 0 3px red;
+	word-wrap: break-all;
+}
 
+.style-active {
+	box-shadow: 0 0 10px blue;
+	transition: box-shadow 0.5s !important;
+}
 .step pre.ql-syntax {
     background-color: #23241f;
     color: #f8f8f2;
@@ -196,43 +69,147 @@ p.ql-video {
 	font-family: 'Microsoft-YaHei';
 }
 
+/*编辑状态的幻灯片*/
+#impress {
+	transition: left 0.5s, transform 0.5s !important;
+}
+
+.impress-editing {
+	position: absolute;
+	left: 60% !important;
+	width: 40% !important;
+	height: 100% !important;
+	overflow-y: scroll !important;
+}
+
+.impress-editing #impress {
+	position: absolute;
+	left: 1%;
+	right: 1%;
+	width: 98% !important;
+	height: 100% !important;
+}
+
+.impress-editing #impress .step {
+	position: relative;
+	width: 900px;
+	box-shadow: 0 0 5px black;
+	transition: box-shadow 0.3s;
+	margin-top: 30px;
+}
+
+.impress-editing #impress .active {
+	box-shadow: 0 0 5px red;	
+}
+
+/*编辑器*/
+#quill {
+	position: absolute;
+	top: 0%;
+	left: -60%;
+	width: 60%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 4;
+	transition: left 0.5s;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+#qull .ql-toolbar {
+	position: relative !important;
+	top: 0 !important;
+}
+#quill #editor {
+	height: 100%;
+	overflow-x: scroll;
+}
+.ql-formats {
+	margin-top: 5px;
+}
+.ql-picker-item:hover {
+	box-shadow: 0 0 4px blue;
+}
+.ql-editor ol>li, .ql-editor ul>li {
+	padding: 10px;
+}
+.ql-syntax {
+	font-size: 25px !important;
+}
 
 
-#formula-editor {
-	position: fixed;
-	left: 0%;
-	right: 0%;
+/*样式框*/
+#style-panel {
+	position: absolute;
+	bottom: -165px;
+	right: 0;
+	width: 30%;
+	height: 165px;
+	min-width: 400px;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 5px 0 0 0;
+	transition: bottom 0.3s;
+}
+
+#style-panel .input-groups {
+	float: left;
+}
+#style-panel .input-groups .input-group {
+	margin: 10px;
+	width: 105px;
+}
+
+#translate .input-group {
+	width: 120px !important;
+}
+
+.input-groups h3 {
+	display: block;
+	clear: both;
+	font-size: 20px;
+	font-family: 'kaiti';
+	margin: 5px;
+}
+
+
+/*工具*/
+#tool {
+	position: fixed !important;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 600px;
-	height: 500px;
-	margin: 0 auto;
-	z-index: -1;
-	border-radius: 10px;
-	box-shadow: 0 0 15px black;
-	font-size: 13px;
-	transition: opacity 0.5s;
-	opacity: 0;
+	right: 20px;
+	width: 52px;
+  	display: flex;
+  	flex-direction: column;
+  	z-index: 3;
 }
-#formula-editor #input,  #formula-editor #output {
-	height: 50%;
-	width: 100%;
-	border-radius: 10px 10px 0px 0px;
-	padding: 20px;
-	border: 15px solid white;
-	background-color: #f0f0f0;
+#tool button {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 16px;
+	line-height: 50px;
+	transition: all 0.3s;
+	user-select: none;
+	box-shadow: 0px 0px 10px black;
+	border: none;
+	margin-bottom: 20px;
+	background: none;
 }
-#formula-editor #output {
-	border-radius: 0px 0px 10px 10px;
-	overflow: scroll;
+#tool button:hover {
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 0 5px black;
 }
-
-#formula-editor #buffer {
+#tool button:active {
+	background-color: white;
+	box-shadow: 0px 0px 10px white;
+}
+#tool #insert-slide, #remove-slide {
 	display: none;
 }
 
-
-#video-select {
+/*插入链接框*/
+#link-edit {
 	position: fixed;
 	left: 0%;
 	right: 0%;
@@ -245,7 +222,46 @@ p.ql-video {
 	border-radius: 5px;
 	box-shadow: 0 0 15px black;
 	font-size: 13px;
-	transition: opacity 0.5s;
+	transition: opacity 0.3s;
+	opacity: 0;
+	background-color: white;
+	padding: 15px;
+}
+
+.insert-link .input-group {
+	margin: 10px 0;
+}
+.link-text {
+	display: block;
+	margin: 8px;
+	text-align: center;
+}
+#link-edit button {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	height: 35px;
+	font-size: 15px;
+	padding: 3px;
+	font-family: 'kaiti';	
+}
+
+
+/*视频选择框*/
+#video-select {
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 300px;
+	height: 230px;
+	margin: 0 auto;
+	z-index: -1;
+	border-radius: 5px;
+	box-shadow: 0 0 15px black;
+	font-size: 13px;
+	transition: opacity 0.3s;
 	opacity: 0;
 	background-color: white;
 	padding: 15px;
@@ -255,7 +271,7 @@ input[name="filename"] {
 	z-index: 3;
 	opacity: 0;
 }
-#insert-video .input-group {
+.insert-video .input-group {
 	margin: 10px 0;
 }
 .select-file {
@@ -278,17 +294,57 @@ input[name="filename"] {
 	margin: 8px;
 	text-align: center;
 }
-
-.ql-editor ol>li, .ql-editor ul>li {
-	padding: 10px;
+#video-select button {
+	position: relative;
+	top: -30px;
+	width: 100%;
+	text-align: center;
+	height: 35px;
+	font-size: 15px;
+	padding: 3px;
+	font-family: 'kaiti';	
 }
 
-.ql-syntax {
-	font-size: 25px !important;
+/*公式编辑框*/
+#formula-editor {
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 600px;
+	height: 500px;
+	margin: 0 auto;
+	z-index: -1;
+	border-radius: 10px;
+	box-shadow: 0 0 15px black;
+	font-size: 13px;
+	transition: opacity 0.3s;
+	opacity: 0;
+	background-color: white;
+}
+#formula-editor #input,  #formula-editor #output {
+	height: calc(50% - 15px);
+	width: 100%;
+	border-radius: 10px 10px 0px 0px;
+	padding: 20px;
+	border: 15px solid white;
+	background-color: #f0f0f0;
+}
+#formula-editor button {
+	width: calc(100% - 26px);
+	margin: 0 13px;
+	text-align: center;
+	height: 35px;
+	font-size: 20px;
+	padding: 3px 0;
+	font-family: 'kaiti';
+}
+#formula-editor #output {
+	border-radius: 0px 0px 10px 10px;
+	overflow: scroll;
 }
 
-#progress-bar {
-	position: absolute;
-	bottom: 5px;
-	left: 10%;
+#formula-editor #buffer {
+	display: none;
 }

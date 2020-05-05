@@ -96,14 +96,23 @@
         <div id="editor"></div>
     </div>
 
-    <div id="formula-editor">
-        <textarea id='input' oninput="latex_render();" placeholder="输入"></textarea>
-        <div id='output'>预览</div>
-        <div id="buffer"></div>
+    <div id="link-edit">
+        <div class="input-groups insert-link">
+            <h3>插入链接</h3>
+            <div class="input-group">
+                <span class="input-group-addon">文本</span>
+                <input type="text" class="form-control" name="link-text">
+            </div>    
+            <div class="input-group">
+                <span class="input-group-addon">地址</span>
+                <input type="text" class="form-control" name="link-url">
+            </div>    
+            <button type="button" class="btn btn-default" onclick="insert_link();">插入</button>
+        </div>
     </div>
     
     <div id="video-select">
-        <div class="input-groups" id="insert-video">
+        <div class="input-groups insert-video">
             <h3>插入视频</h3>
             <div class="input-group">
                 <span class="input-group-addon">名称</span>
@@ -111,15 +120,22 @@
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">地址</span>
-                <input type="text" class="form-control" name="url">
+                <input type="text" class="form-control" name="video-url">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">或者</span>
                 <input type="file" class="form-control" name="filename">
             </div>
             <div class="select-file" tabindex="0">选择文件</div>
+            <button type="button" class="btn btn-default" onclick="insert_video();">插入</button>
         </div>
+    </div>
 
+    <div id="formula-editor">
+        <textarea id='input' oninput="latex_render();" placeholder="输入"></textarea>
+        <button type="button" class="btn btn-default" onclick="insert_formula();">插入</button>
+        <div id='output'>预览</div>
+        <div id="buffer"></div>
     </div>
 
     <div id="tool">
@@ -128,30 +144,31 @@
         <button id="insert-slide">插入</button>
         <button id="remove-slide">删除</button>
         <button>保存</button>
+        <button>演示</button>
     </div>
 
     <div id="impress-container">
         <div id="impress"
-            data-transition-duration="1000"
+            data-transition-duration="500"
             data-width="1024"
             data-height="768"
             data-max-scale="3"
             data-min-scale="0"
-            data-perspective="1000"
-        >
-
-        <div class="step" data-y="-300"></div>
-        <div class="step" data-y="0"></div>
-        <div class="step" data-y="300"></div>
-       
-        <div class="step" data-y="0" data-x="-600"></div>
-        <div class="step" data-y="0" data-x="600"></div>
-        <div id="overview" class="step" data-x="0" data-y="0" data-z="1000" data-scale="2"></div>
+            data-perspective="1000">
+            <div class="step" data-y="-300"></div>
+            <div class="step" data-y="0"></div>
+            <div class="step" data-y="300"></div>
+           
+            <div class="step" data-y="0" data-x="-600"></div>
+            <div class="step" data-y="0" data-x="600"></div>
+            <div id="overview" class="step" data-x="0" data-y="0" data-z="1000" data-scale="2"></div>
+        </div>
     </div>
 
 <script type="text/javascript" src="js/quill-setup.js"></script>
-<script src="js/edit.js"></script>
-<script src="js/impress.js"></script>
+<script type="text/javascript" src="js/edit.js"></script>
+<script type="text/javascript" src="js/key-event.js"></script>
+<script type="text/javascript" src="js/impress.js"></script>
 <script>
     impress().init();
     impress().showPage();
