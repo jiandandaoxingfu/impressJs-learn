@@ -63,9 +63,8 @@ p.ql-video {
 	transition: opacity 0.8s;
 	opacity: 0;
 }
-.step p, .ql-editor p {
+.ql-editor p {
 	padding: 5px 0;
-	font-size: 18px;
 	font-family: 'Microsoft-YaHei';
 }
 
@@ -214,7 +213,7 @@ p.ql-video {
 }
 
 /*插入链接框*/
-#link-edit {
+#insert-link {
 	position: fixed;
 	left: 0%;
 	right: 0%;
@@ -241,7 +240,7 @@ p.ql-video {
 	margin: 8px;
 	text-align: center;
 }
-#link-edit button {
+#insert-link button {
 	position: relative;
 	width: 100%;
 	text-align: center;
@@ -251,9 +250,12 @@ p.ql-video {
 	font-family: 'kaiti';	
 }
 
+img[src="   "] {
+	display: none;
+}
 
 /*视频选择框*/
-#video-select {
+#insert-video {
 	position: fixed;
 	left: 0%;
 	right: 0%;
@@ -272,14 +274,14 @@ p.ql-video {
 	padding: 15px;
 }
 
-input[name="filename"] {
+input[name="video-name"] {
 	z-index: 3;
 	opacity: 0;
 }
 .insert-video .input-group {
 	margin: 10px 0;
 }
-.select-file {
+#insert-video .select-file {
 	position: relative;
 	top: -44px;
     left: 53px;
@@ -299,7 +301,7 @@ input[name="filename"] {
 	margin: 8px;
 	text-align: center;
 }
-#video-select button {
+#insert-video button {
 	position: relative;
 	top: -30px;
 	width: 100%;
@@ -354,8 +356,8 @@ input[name="filename"] {
 	display: none;
 }
 
-/*输入文件名框*/
-#input-filename {
+/*保存文件名框*/
+#save-filename {
 	position: fixed;
 	left: 0%;
 	right: 0%;
@@ -374,11 +376,11 @@ input[name="filename"] {
 	padding: 15px;
 }
 
-.input-filename .input-group {
+.save-filename .input-group {
 	margin: 10px 0;
 }
 
-#input-filename button {
+#save-filename button {
 	position: relative;
 	width: 100%;
 	text-align: center;

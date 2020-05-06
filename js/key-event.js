@@ -35,13 +35,15 @@ document.body.onkeydown = function(e) {
 			} else if( key === 'r' ) { // 删除幻灯片
 				remove_slide();
 				update_page_number();
+			} else if( key === 'p' ) { // 打开/关闭公式图片选择框
+				$('button.ql-image')[0].click();
 			} else if( key === 'm' ) { // 打开/关闭公式编辑器
 				$('button.ql-formula')[0].click();
 			} else if( key === 'v' ) { // 打开/关闭视频选择框
 				$('button.ql-video')[0].click();
 			} else if( key === 'l' ) { // 插入链接
 				$('button.ql-link')[0].click();
-			} 
-		} 
+			}
+		}
 	}
 }

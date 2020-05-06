@@ -50,6 +50,8 @@ function quill_change_view() {
 		impress().init();
 		impress().goto($('.step')[active_slide_index]);
 	}
+	edit_slide();
+	update_page_number();
 }
 
 function edit_slide() {
@@ -85,6 +87,7 @@ function update_style_panel() {
 		 $$(id).value = parseFloat( active_slide.getAttribute(id) ) || 0;
 		} )
 	$$('data-scale').value = parseFloat( active_slide.getAttribute('data-scale') ) || 1;
+	$$('data-width').value = parseInt( $('.style-active').outerWidth() );
 }
 
 // 根据style-panel中input的值更新slide样式。
@@ -93,10 +96,15 @@ function update_step_style(ele) {
 	let active_slide = $('.style-active')[0] || $$('overview');
 	let data = parseFloat( ele.value );
 	if( data ) {
-		active_slide.setAttribute(attr, ele.value);
-		let event = document.createEvent("HTMLEvents");
-        event.initEvent("resize", true, true);
-        window.dispatchEvent(event);
+		if( attr !== 'data-width' ) {
+			active_slide.setAttribute(attr, ele.value);
+			let event = document.createEvent("HTMLEvents");
+        	event.initEvent("resize", true, true);
+        	window.dispatchEvent(event);
+        } else {
+        	active_slide.style.width = data + 'px';
+        }
+
 	}
 }
 
@@ -106,6 +114,8 @@ function insert_slide() {
 	let insert_slide = active_slide.nextElementSibling;
 	insert_slide.classList.add('active');
 	active_slide.classList.remove('active');
+	update_page_number();
+	edit_slide()
 }
 
 function remove_slide() {
@@ -115,11 +125,13 @@ function remove_slide() {
 	if( next_slide.id === 'overview' ) next_slide = active_slide.previousElementSibling;
 	$$('impress').removeChild(active_slide);
 	next_slide.classList.add('active');
+	update_page_number();
+	edit_slide()
 }
 
 function save_slides() {
-	input_popup_change_view('input-filename');
-	let filename = $('[name="file-name"]')[0].value;
+	input_popup_change_view('save-filename');
+	let filename = $('[name="filename"]')[0].value;
 	if( filename === "" ) return;
 
 	let first = $$('impress').firstElementChild;
@@ -184,19 +196,14 @@ document.addEventListener('click', e => {
 
 	if( action === "编辑" ) {
 		quill_change_view();
-		edit_slide();
 	} else if( action === "变换" ) {
 		style_panel_change_view();
 	} else if( action === "插入" && !cn.includes('btn') ) {
 		insert_slide();
-		update_page_number();
-		edit_slide();
 	} else if( action === "删除" ) {
 		remove_slide();
-		update_page_number();
-		edit_slide();
 	} else if( action === "保存" && !cn.includes('btn') ) {
-		input_popup_change_view('input-filename');
+		input_popup_change_view('save-filename');
 	} else if( action === "演示" ) {
 		play_slides();
 	} else if( window.is_edit && slide_with_ele.length ) { // 编辑幻灯片内容时，点击幻灯片进行切换。

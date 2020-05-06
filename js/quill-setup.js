@@ -9,7 +9,7 @@ hljs.configure({
 
 var toolbarOptions = [
 	[{
-		'size': ['10px', '12px', "14px", '16px', false, '20px', '22px', '24px', '26px', '32px', '48px', "60px", "72px", "96px", "144px"]
+		'size': ['10px', '12px', "14px", '16px', '18px', '20px', '22px', '24px', '26px', '32px', '48px', "60px", "72px", "96px", "144px", "180px", "225px"]
 	}], // custom
 	[{
 		'font': ['Microsoft-YaHei', 'SimSun', 'SimHei', 'KaiTi', 'FangSong', 'Arial', 'Times-New-Roman', 'sans-serif']
@@ -40,7 +40,10 @@ var quill = new Quill('#editor', {
 				'video': function() {
 					let range = quill.getSelection();
 					index = range === null ? 0 : range.index;
-					input_popup_change_view('video-select');
+
+					$('#insert-video h3')[0].innerText = "插入视频";
+					$('input[name="video-name"]')[0].setAttribute("accept", "audio/mp4, video/mp4, video/3gpp, video/*");
+					input_popup_change_view('insert-video');
 				}
 			}
 		},
@@ -70,11 +73,11 @@ function input_popup_change_view(id) {
 // 插入链接
 
 $('.ql-toolbar .ql-link')[0].onclick = function() {
-	input_popup_change_view('link-edit');
+	input_popup_change_view('insert-link');
 }
 
 function insert_link() {
-	input_popup_change_view('link-edit');
+	input_popup_change_view('insert-link');
 	
 	let text = $('[name="link-text"')[0].value;
 	let url = $('[name="link-url"')[0].value;
@@ -93,27 +96,42 @@ function insert_link() {
 }
 
 
-// 离开选择视频框后，插入视频
+// 插入图片
+$('.ql-toolbar .ql-image')[0].onclick = function() {
+	$('#insert-video h3')[0].innerText = "插入图片";
+	$('input[name="video-name"]')[0].setAttribute("accept", "image/png, image/gif, image/jpeg, image/bmp, image/x-icon");
+	input_popup_change_view('insert-video');
+}
+
+
+// 插入视频/图片
 var index = 0;
-function insert_video() {
+function insert_video() {	
 	let name = $('[name="video-title"')[0].value;
 	let url = $('[name="video-url"]')[0].value;
 	if( url === '' ) {
-		if( $('[name="filename"]')[0].files.length !== 0 ) {
-			url = $('[name="filename"]')[0].files[0].name;
+		if( $('[name="video-name"]')[0].files.length !== 0 ) {
+			url = $('[name="video-name"]')[0].files[0].name;
 		}
 	}
-	
+
 	$('[name="video-title"')[0].value = '';
 	$('[name="video-url"]')[0].value = '';
-	$('[name="filename"]')[0].value = '';
-	input_popup_change_view('video-select');
+	$('[name="video-name"]')[0].value = '';
+	input_popup_change_view('insert-video');
 
 	if( url !== '' ) {
-		if( index === 0 ) index = 1;
-		quill.insertEmbed(index, 'video', url );
-		$(`<p class="ql-align-center">${name}</p>`).insertAfter( $$('video') );
-		$$('video').removeAttribute('id');
+		if( $('input[name="video-name"]')[0].getAttribute("accept").includes('image') ) {
+			let img = $('img[src="   "]')[0];
+			img.src = 'image/' + url;
+			img.parentElement.className = 'ql-align-center';
+			$(`<p class="ql-align-center ql-size-18px">${name}</p>`).insertAfter(img.parentElement);
+		} else {
+			if( index === 0 ) index = 1;
+			quill.insertEmbed(index, 'video', 'video/' + url );
+			$(`<p class="ql-align-center ql-size-18px" >${name}</p>`).insertAfter( $$('video') );
+			$$('video').removeAttribute('id');
+		}
 	}
 }
 
@@ -157,8 +175,9 @@ function insert_formula() {
 
 // 双击数学公式，重新编辑
 document.addEventListener('dblclick', e => {
+	if( !window.is_edit ) return
 	let ql_formula = e.path.slice(0, -4).filter( e => (e.className.toString() || '').includes('ql-formula') );
-	if( ql_formula.length && ql_formula.tagName.toLowerCase() === "span" ) {
+	if( ql_formula.length && ql_formula[0].tagName.toLowerCase() === "span" ) {
 		input_popup_change_view('formula-editor');
 		$$('input').focus();
 		$$('input').value = ql_formula[0].getAttribute('data-value').replace(/          /g, '\n');

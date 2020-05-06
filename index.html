@@ -56,15 +56,15 @@
             <h3>平移</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>  
 
@@ -72,15 +72,15 @@
             <h3>旋转</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>
 
@@ -89,7 +89,12 @@
             <div class="input-group">
                 <span class="input-group-addon">R</span>
                 <input type="number" max="10" min="0.1" step="0.1" class="form-control" id="data-scale" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="1">
-            </div>    
+            </div>
+            <h3>宽度</h3>
+            <div class="input-group">
+                <span class="input-group-addon">W</span>
+                <input type="number" max="900" min="30" step="20" class="form-control" id="data-width" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="900">
+            </div>  
         </div>
     </div>
 
@@ -97,7 +102,7 @@
         <div id="editor"></div>
     </div>
 
-    <div id="link-edit">
+    <div id="insert-link">
         <div class="input-groups insert-link">
             <h3>插入链接</h3>
             <div class="input-group">
@@ -112,7 +117,7 @@
         </div>
     </div>
     
-    <div id="video-select">
+    <div id="insert-video">
         <div class="input-groups insert-video">
             <h3>插入视频</h3>
             <div class="input-group">
@@ -125,7 +130,7 @@
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">或者</span>
-                <input type="file" class="form-control" name="filename">
+                <input type="file" class="form-control" name="video-name">
             </div>
             <div class="select-file" tabindex="0">选择文件</div>
             <button type="button" class="btn btn-default" onclick="insert_video();">插入</button>
@@ -139,12 +144,12 @@
         <div id="buffer"></div>
     </div>
 
-    <div id="input-filename">
-        <div class="input-groups input-filename">
+    <div id="save-filename">
+        <div class="input-groups save-filename">
             <h3>保存文件</h3>
             <div class="input-group">
-                <span class="input-group-addon">文件</span>
-                <input type="text" class="form-control" name="file-name">
+                <span class="input-group-addon">文件名</span>
+                <input type="text" class="form-control" name="filename">
             </div>    
             <button type="button" class="btn btn-default" onclick="save_slides();">保存</button>
         </div>

@@ -10,7 +10,6 @@
 	margin: 0;
 	position: relative
 }
-
 .ql-container.ql-disabled .ql-tooltip {
 	visibility: hidden
 }
@@ -39,8 +38,9 @@
 	overflow: hidden;
 	padding: 12px 15px;
 	text-align: left;
-	word-wrap: break-word
+	word-wrap: break-word;
 }
+
 
 .ql-editor>* {
 	cursor: text
@@ -516,6 +516,13 @@
 }
 .ql-editor .ql-size-144px {
 	font-size: 144px
+}
+.ql-editor .ql-size-180px {
+	font-size: 180px
+
+}
+.ql-editor .ql-size-225px {
+	font-size: 225px
 }
 
 .ql-editor .ql-direction-rtl {
@@ -1015,8 +1022,8 @@
 	width: 50px
 }
 
-.ql-snow .ql-picker.ql-size .ql-picker-label::before, .ql-snow .ql-picker.ql-size .ql-picker-item::before {
-	content: '18'
+.ql-snow .ql-picker.ql-size .ql-picker-label::before,.ql-snow .ql-picker.ql-size .ql-picker-item::before {
+    content: '32'
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="10px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="10px"]::before {
@@ -1073,6 +1080,12 @@
 }
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="144px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="144px"]::before {
 	content: '144'
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="180px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="180px"]::before {
+	content: '180'
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value="225px"]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value="225px"]::before {
+	content: '225'
 }
 
 .ql-snow .ql-color-picker.ql-background .ql-picker-item {
