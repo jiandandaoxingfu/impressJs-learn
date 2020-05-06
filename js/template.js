@@ -1,3 +1,4 @@
+var template = `
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,9 +30,8 @@
     <script src="js/image-resize.min.js"></script>
     <script src="js/image-drop.min.js"></script>
 
-    <script type="text/javascript" src="js/template.js"></script>
     <link rel="stylesheet" type="text/css" href="css/impress-progress.css">
-
+    
     <!-- MathJax -->
     <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -167,13 +167,7 @@
             data-max-scale="3"
             data-min-scale="0"
             data-perspective="1000">
-            <div class="step" data-y="-300"></div>
-            <div class="step" data-y="0"></div>
-            <div class="step" data-y="300"></div>
-           
-            <div class="step" data-y="0" data-x="-600"></div>
-            <div class="step" data-y="0" data-x="600"></div>
-            <div id="overview" class="step" data-x="0" data-y="0" data-z="1000" data-scale="2"></div>
+            STEPS_TO_REPLACE
         </div>
     </div>
 
@@ -189,3 +183,4 @@
 
 </body>
 </html>
+`

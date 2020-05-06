@@ -103,10 +103,10 @@ function insert_video() {
 			url = $('[name="filename"]')[0].files[0].name;
 		}
 	}
-
-	$('[name="video-url"]')[0].value = '';
-	$('[name="filename"]')[0].files = null;
+	
 	$('[name="video-title"')[0].value = '';
+	$('[name="video-url"]')[0].value = '';
+	$('[name="filename"]')[0].value = '';
 	input_popup_change_view('video-select');
 
 	if( url !== '' ) {

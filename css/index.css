@@ -76,8 +76,8 @@ p.ql-video {
 
 .impress-editing {
 	position: absolute;
-	left: 60% !important;
-	width: 40% !important;
+	left: 56% !important;
+	width: 44% !important;
 	height: 100% !important;
 	overflow-y: scroll !important;
 }
@@ -102,12 +102,17 @@ p.ql-video {
 	box-shadow: 0 0 5px red;	
 }
 
+/*演示状态下*/
+.impress-playing #impress .step {
+	box-shadow: none;
+}
+
 /*编辑器*/
 #quill {
 	position: absolute;
 	top: 0%;
 	left: -60%;
-	width: 60%;
+	width: 56%;
 	height: 100%;
 	overflow: hidden;
 	z-index: 4;
@@ -347,4 +352,38 @@ input[name="filename"] {
 
 #formula-editor #buffer {
 	display: none;
+}
+
+/*输入文件名框*/
+#input-filename {
+	position: fixed;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 300px;
+	height: 150px;
+	margin: 0 auto;
+	z-index: -1;
+	border-radius: 5px;
+	box-shadow: 0 0 15px black;
+	font-size: 13px;
+	transition: opacity 0.3s;
+	opacity: 0;
+	background-color: white;
+	padding: 15px;
+}
+
+.input-filename .input-group {
+	margin: 10px 0;
+}
+
+#input-filename button {
+	position: relative;
+	width: 100%;
+	text-align: center;
+	height: 35px;
+	font-size: 15px;
+	padding: 3px;
+	font-family: 'kaiti';	
 }

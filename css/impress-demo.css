@@ -115,6 +115,10 @@ a:hover,a:focus {
 	transition: opacity 1s
 }
 
+.impress-enabled .step:not(.active) video {
+	opacity: 0.1 !important;
+}
+
 .impress-enabled .step.active {
 	opacity: 1
 }

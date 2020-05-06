@@ -6,7 +6,7 @@
 	let width = window.innerWidth;
 	style.innerHTML = 
 		`.impress-editing #impress .step {
-			zoom: ${0.36 * width / 900};
+			zoom: ${0.4 * width / 900};
 		}`
 	document.head.appendChild(style);
 })();
@@ -15,7 +15,7 @@ window.onresize = function() {
 	let width = window.innerWidth;
 	$('[name="zoom"]')[0].innerHTML = 
 		`.impress-editing #impress .step {
-			zoom: ${0.36 * width / 900};
+			zoom: ${0.4 * width / 900};
 		}`
 }
 
@@ -118,9 +118,36 @@ function remove_slide() {
 }
 
 function save_slides() {
-	document.body.removeChild( $('footer')[0] );
-	document.body.removeChild( $('header')[0] );
-	impress().tear();
+	input_popup_change_view('input-filename');
+	let filename = $('[name="file-name"]')[0].value;
+	if( filename === "" ) return;
+
+	let first = $$('impress').firstElementChild;
+	let slides = ( first.className.includes('step') ? $$('impress') : first ).innerHTML;
+	slides = slides.replace(/style=".*?preserve-3d;"/g, '');
+	template = template.replace('STEPS_TO_REPLACE', slides);
+
+	let a = document.createElement('a');
+	let blob = new Blob([template]);
+	a.download = filename + '.html';
+	a.href = URL.createObjectURL(blob);
+	a.click();
+	URL.revokeObjectURL(blob);
+}
+
+function play_slides() {
+	if( window.is_edit ) {
+		quill_change_view();
+	} else if( window.is_style ) {
+		style_panel_change_view();
+	}
+	if( $$('impress-container').classList.contains('impress-playing') ) {
+		$$('impress-container').classList.remove('impress-playing');
+	} else {
+		$$('impress-container').classList.add('impress-playing');
+		impress().goto($$('step-1'));
+	}
+
 }
 
 function update_page_number() {
@@ -168,8 +195,10 @@ document.addEventListener('click', e => {
 		remove_slide();
 		update_page_number();
 		edit_slide();
-	} else if( action === "保存" ) {
-		save_slides();
+	} else if( action === "保存" && !cn.includes('btn') ) {
+		input_popup_change_view('input-filename');
+	} else if( action === "演示" ) {
+		play_slides();
 	} else if( window.is_edit && slide_with_ele.length ) { // 编辑幻灯片内容时，点击幻灯片进行切换。
 		editing_change_slide(slide_with_ele[0]);
 	} else if( window.is_style && slide_with_ele.length ) { // 编辑幻灯片样式时，点击幻灯片进行切换。
