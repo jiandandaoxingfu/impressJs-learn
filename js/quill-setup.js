@@ -226,7 +226,7 @@ document.addEventListener('mousemove', e => {
 			close_picker();
 			open_picker(picker[0]);
 		}
-	} else if( 'ql-editor ql-toolbar '.includes(cn) || tg === 'button' ) {
+	} else if( cn.includes('ql-editor') || tg === 'button' ) {
 		close_picker();
 	}
 })

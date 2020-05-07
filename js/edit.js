@@ -128,7 +128,8 @@ function insert_slide() {
 	insert_slide.classList.add('active');
 	active_slide.classList.remove('active');
 	update_page_number();
-	edit_slide()
+	edit_slide();
+	scroll.scroll2middle(insert_slide);
 }
 
 function remove_slide() {
@@ -139,7 +140,8 @@ function remove_slide() {
 	$$('impress').removeChild(active_slide);
 	next_slide.classList.add('active');
 	update_page_number();
-	edit_slide()
+	edit_slide();
+	scroll.scroll2middle(next_slide);
 }
 
 function save_slides() {
@@ -189,6 +191,7 @@ function editing_change_slide(slide) {
 	slide.className = "step active";
 	update_page_number();
 	edit_slide();
+	scroll.scroll2middle(slide);
 }
 
 function styling_change_slide(slide) {

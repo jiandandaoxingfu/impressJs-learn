@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,6 +32,8 @@
     <script type="text/javascript" src="js/template.js"></script>
     <link rel="stylesheet" type="text/css" href="css/impress-progress.css">
 
+    <script type="text/javascript" src="js/scroll.js"></script>
+
     <!-- MathJax -->
     <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -57,15 +58,15 @@
             <h3>平移</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>  
 
@@ -73,15 +74,15 @@
             <h3>旋转</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>
 
@@ -95,7 +96,7 @@
             <div class="input-group">
                 <span class="input-group-addon">W</span>
                 <input type="number" max="900" min="30" step="20" class="form-control" id="data-width" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="900">
-            </div>   
+            </div>  
         </div>
     </div>
 
@@ -165,7 +166,7 @@
         <button>演示</button>
     </div>
 
-    <div id="impress-container" class="impress-playing">
+    <div id="impress-container">
         <div id="impress"
             data-transition-duration="500"
             data-width="1024"
@@ -175,15 +176,21 @@
             data-perspective="1000">
             
             
-            <div class="step past" data-y="-300" data-x="0" data-z="0"  id="step-1"><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-60px ql-font-KaiTi">在线</span><span class="ql-font-KaiTi ql-size-96px" style="color: rgb(255, 153, 0);">幻</span><span class="ql-size-60px ql-font-KaiTi" style="color: rgb(255, 255, 0);">灯</span><span class="ql-font-KaiTi ql-size-32px">片</span><span class="ql-size-60px ql-font-KaiTi">制作小程序</span></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><a href="https://github.com/jiandandaoxingfu/impressJs-learn" target="_blank" class="ql-font-KaiTi ql-size-48px">JMx</a></p><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-Times-New-Roman">2020-05-06</span></p><p class="ql-align-center"><br></p></div></div>
-            <div class="step past prev" data-y="0" data-x="1010" data-z="-550"  data-scale="1" id="step-2" data-rotate-y="10" data-rotate-x="10" data-rotate-z="10"><div class="ql-editor ql-slide"><p><br></p><p><span class="ql-size-48px ql-font-KaiTi">使用手册</span></p><p><br></p><ul><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;工具介绍</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;快捷键</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;依赖库</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;参考资料</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;关于我﻿</span></li></ul><p><span class="ql-font-KaiTi ql-size-32px"><span class="ql-cursor">﻿﻿﻿﻿</span></span></p></div></div>
-            <div class="step active present" data-y="300" data-x="0" data-z="0"  id="step-3"></div>
+            
+            
+            
+            <div class="step active" data-y="20" data-x="0" data-z="0" id="step-1" style=""><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-60px ql-font-KaiTi">在线</span><span class="ql-font-KaiTi ql-size-96px" style="color: rgb(255, 153, 0);">幻</span><span class="ql-size-60px ql-font-KaiTi" style="color: rgb(255, 255, 0);">灯</span><span class="ql-font-KaiTi ql-size-32px">片</span><span class="ql-size-60px ql-font-KaiTi">制作小程序</span></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><br></p><p class="ql-align-center"><a href="https://github.com/jiandandaoxingfu/impressJs-learn" target="_blank" class="ql-size-48px ql-font-Times-New-Roman">JMx</a></p><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-font-Times-New-Roman ql-size-26px">2020-05-06</span></p><p class="ql-align-center"><br></p></div></div>
+            <div class="step" data-y="0" data-x="20" data-z="-550" data-scale="0.2" id="step-2" data-rotate-y="-10" data-rotate-x="10" data-rotate-z="-10" style=""><div class="ql-editor ql-slide"><p><br></p><p><span class="ql-size-48px ql-font-KaiTi">使用手册</span></p><p><br></p><ul><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;工具介绍</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;快捷键</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;依赖库</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;参考资料</span></li><li><span class="ql-font-KaiTi ql-size-32px">&nbsp;关于我﻿</span></li></ul><p><br></p></div></div><div class="step" data-x="-20" data-y="900" data-z="-550" style="" data-scale="0.6"><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-KaiTi">工具介绍</span></p><p class="ql-align-center"><br></p></div></div><div class="step" data-x="-1040" data-y="480" data-z="-250" style="" data-rotate-y="-5" data-rotate-z="-15"><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-KaiTi">快捷键</span></p><p class="ql-align-center"><br></p></div></div><div class="step" data-x="-1040" data-y="-460" data-z="20" style="" data-scale="1.5"><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-KaiTi">依赖库</span></p><p class="ql-align-center"><br></p></div></div><div class="step" data-x="1010" data-y="-460" data-z="-550" style="" data-rotate-y="10" data-rotate-x="10"><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-KaiTi">参考资料</span></p><p class="ql-align-center"><br></p></div></div><div class="step" data-x="1010" data-y="520" data-z="550" style=""><div class="ql-editor ql-slide"><p class="ql-align-center"><br></p><p class="ql-align-center"><span class="ql-size-32px ql-font-KaiTi">关于我</span></p><p class="ql-align-center"><br></p></div></div>
+            
            
-            <div class="step future next" data-y="0" data-x="-600" data-z="0"  id="step-4"></div>
-            <div class="step future" data-y="0" data-x="600" data-z="0"  id="step-5"></div>
-            <div id="overview" class="step past" data-x="0" data-y="0" data-z="1000" data-scale="2" ></div>
+            
+            
+            <div id="overview" class="step" data-x="0" data-y="0" data-z="1000" data-scale="1.5" style=""></div>
+
         
+
         
+
         </div>
     </div>
 

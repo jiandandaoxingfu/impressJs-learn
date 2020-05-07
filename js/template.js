@@ -1,5 +1,5 @@
-var template = `
-<!doctype html>
+var template = 
+`<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -33,6 +33,8 @@ var template = `
     <script type="text/javascript" src="js/template.js"></script>
     <link rel="stylesheet" type="text/css" href="css/impress-progress.css">
 
+    <script type="text/javascript" src="js/scroll.js"></script>
+
     <!-- MathJax -->
     <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
@@ -57,15 +59,15 @@ var template = `
             <h3>平移</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-x" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-y" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="30" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="10000" min="-10000" class="form-control" id="data-z" step="20" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>  
 
@@ -73,15 +75,15 @@ var template = `
             <h3>旋转</h3>
             <div class="input-group">
                 <span class="input-group-addon">X</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-x" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Y</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-y" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>    
             <div class="input-group">
                 <span class="input-group-addon">Z</span>
-                <input type="number" max="360" min="0" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
+                <input type="number" max="180" min="-180" class="form-control" id="data-rotate-z" step="5" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="0">
             </div>
         </div>
 
@@ -95,7 +97,7 @@ var template = `
             <div class="input-group">
                 <span class="input-group-addon">W</span>
                 <input type="number" max="900" min="30" step="20" class="form-control" id="data-width" onkeyup="update_step_style(this)" onchange="update_step_style(this);" value="900">
-            </div>   
+            </div>  
         </div>
     </div>
 
@@ -165,7 +167,7 @@ var template = `
         <button>演示</button>
     </div>
 
-    <div id="impress-container" class="impress-playing">
+    <div id="impress-container">
         <div id="impress"
             data-transition-duration="500"
             data-width="1024"
@@ -173,7 +175,9 @@ var template = `
             data-max-scale="3"
             data-min-scale="0"
             data-perspective="1000">
+            
             STEPS_TO_REPLACE
+
         </div>
     </div>
 
