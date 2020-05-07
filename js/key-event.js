@@ -11,7 +11,7 @@ document.body.onkeydown = function(e) {
 		} else if( key === 't' ) { // 打开/关闭样式框
 			style_panel_change_view();
 		} else if( key === 's' ) {
-			input_popup_change_view('input-filename');
+			input_popup_change_view('save-filename');
 		} else if( key === 'ArrowUp' || key === "ArrowDown" ) { // 编辑器或样式框状态下切换幻灯片
 			let slide = $('.style-active')[0] || $('.active')[0];
 			let next_slide = key === 'ArrowUp' ? slide.previousElementSibling : slide.nextElementSibling;

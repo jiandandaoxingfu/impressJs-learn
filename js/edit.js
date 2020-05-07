@@ -50,6 +50,9 @@ function quill_change_view() {
 		$('.step')[active_slide_index].classList.add('active');
 		$$('insert-slide').style.display = 'block';
 		$$('remove-slide').style.display = 'block';
+		setTimeout( () => {
+			scroll.scroll2middle($('.step')[active_slide_index]);
+		}, 500);
 	} else {
 		$$('impress-container').className = "none";
 		$$('insert-slide').style.display = 'none';
@@ -108,6 +111,7 @@ function update_step_style(ele) {
 	let attr = ele.id;
 	let active_slide = $('.style-active')[0] || $$('overview');
 	let data = parseFloat( ele.value );
+	console.log(data);
 	if( data ) {
 		if( attr !== 'data-width' ) {
 			active_slide.setAttribute(attr, ele.value);
@@ -151,11 +155,11 @@ function save_slides() {
 
 	let first = $$('impress').firstElementChild;
 	let slides = ( first.className.includes('step') ? $$('impress') : first ).innerHTML;
-	slides = slides.replace(/style=".*?preserve-3d;"/g, '');
-	template = template.replace('STEPS_TO_REPLACE', slides);
+	slides = slides.replace(/style="[^>]*?preserve-3d;"/g, '');
+	slides = template.replace('STEPS_TO_REPLACE', slides);
 
 	let a = document.createElement('a');
-	let blob = new Blob([template]);
+	let blob = new Blob([slides]);
 	a.download = filename + '.html';
 	a.href = URL.createObjectURL(blob);
 	a.click();

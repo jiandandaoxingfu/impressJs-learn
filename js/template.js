@@ -1,4 +1,4 @@
-var template = 
+const template = 
 `<!doctype html>
 <html lang="en">
 <head>

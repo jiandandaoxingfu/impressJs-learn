@@ -26,7 +26,9 @@ body, .step {
 	box-shadow: 0 0 3px red;
 	word-wrap: break-all;
 }
-
+.step img {
+	border-radius: 5px;
+}
 .style-active {
 	box-shadow: 0 0 10px blue;
 	transition: box-shadow 0.5s !important;
@@ -67,6 +69,7 @@ p.ql-video {
 .ql-editor p {
 	padding: 5px 0;
 	font-family: 'Microsoft-YaHei';
+	line-height: 1.5 !important;
 }
 
 /*编辑状态的幻灯片*/
