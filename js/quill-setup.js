@@ -216,14 +216,17 @@ function open_picker(picker) {
 }
 
 document.addEventListener('mousemove', e => {
-	let picker = e.path.slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') );
+	let picker = e.path.slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') ),
+		cn = e.target.className.toString() || '',
+		tg = e.target.tagName.toLowerCase();
+
 	if( picker.length ) {
 		let cn = picker[0].parentElement.className;
 		if( !cn.includes('ql-expanded') ) {
 			close_picker();
 			open_picker(picker[0]);
 		}
-	} else if( e.target.id === 'editor' ) {
+	} else if( 'ql-editor ql-toolbar '.includes(cn) || tg === 'button' ) {
 		close_picker();
 	}
 })

@@ -43,6 +43,8 @@ document.body.onkeydown = function(e) {
 				$('button.ql-video')[0].click();
 			} else if( key === 'l' ) { // 插入链接
 				$('button.ql-link')[0].click();
+			} else if( key === 'c' ) { // 进入/退出代码编辑
+				$('button.ql-code-block')[0].click();
 			}
 		}
 	}

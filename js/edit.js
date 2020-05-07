@@ -1,24 +1,31 @@
 // 根据屏幕宽度和slide宽度，在编辑状态时，对slide进行缩放。
+function compute_style() {
+	let width = window.innerWidth,
+		toolbar_height = $('.ql-toolbar').outerHeight();
+	
+	let style = `
+		.impress-editing #impress .step {
+			zoom: ${0.4 * width / 900};		 
+		}
+	
+		#quill #editor {
+			height: calc(100% - ${toolbar_height}px);
+		}`
+	return style;
+}
+
 (function add_style() {
 	let style = document.createElement('style');
 	style.setAttribute('type', 'text/css');
-	style.setAttribute('name', 'zoom');
-	let width = window.innerWidth;
-	style.innerHTML = 
-		`.impress-editing #impress .step {
-			zoom: ${0.4 * width / 900};
-		}`
+	style.setAttribute('name', 'insertCss');
+	style.innerHTML = compute_style();
 	document.head.appendChild(style);
 })();
 
 window.onresize = function() {
 	let width = window.innerWidth;
-	$('[name="zoom"]')[0].innerHTML = 
-		`.impress-editing #impress .step {
-			zoom: ${0.4 * width / 900};
-		}`
+	$('[name="insertCss"]')[0].innerHTML = compute_style();
 }
-
 
 window.is_edit = !1;
 window.is_style = !1;
@@ -65,14 +72,20 @@ function edit_slide() {
 function style_panel_change_view() {
 	window.is_style = !window.is_style;
 	if( window.is_edit ) quill_change_view();
-	let bottom = $$('style-panel').style.bottom;
-	$$('style-panel').style.bottom = bottom === "0px" ? '-165px' : "0";
-	if( bottom === "-165px" ) {
+	if( window.is_style ) {
+		$$('style-panel').style.display = 'block';
+		setTimeout( () => {
+			$$('style-panel').style.bottom = '0';
+		}, 10);
 		let active_slide = $('.active')[0];
 		active_slide.classList.add('style-active');
 		update_style_panel();
 		impress().goto('overview');
 	} else {
+		$$('style-panel').style.bottom = '-165px';
+		setTimeout( () => {
+			$$('style-panel').style.display = 'none';
+		}, 300)
 		impress().goto($('.style-active')[0]);
 		$('.style-active')[0].classList.remove('style-active');
 	}

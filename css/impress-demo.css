@@ -36,7 +36,6 @@ table {
 
 body {
 	font-family: 'PT Sans',sans-serif;
-	min-height: 740px;
 	background: #d7d7d7;
 	background: -webkit-gradient(radial,50% 50%,0,50% 50%,500,from(#f0f0f0),to(#bebebe));
 	background: -webkit-radial-gradient(#f0f0f0,#bebebe);
