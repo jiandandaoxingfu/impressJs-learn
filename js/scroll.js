@@ -13,7 +13,6 @@ var scroll = {
         var h2 = ele.clientHeight;			// 元素的高度
         var off = this.getHeight(ele) * parseFloat( $('.step').css('zoom') ); 		// 元素距离文档顶部的距离
        	var addScroll = (off + h2/2) - (s + h1/2); 	// 元素中心高度与可视区域中心高度之差
-       	console.log([s, h1, h2, off, addScroll]);
 		if( addScroll + s < 0 ) { // 下滑到头
 			addScroll = - doc.scrollTop;
 		} else if( addScroll > doc.scrollHeight - h1 ) { // 上滑到底

@@ -47,11 +47,15 @@ function quill_change_view() {
 	if( window.is_edit ) {
 		$$('impress-container').className = 'impress-editing';
 		impress().tear();
-		$('.step')[active_slide_index].classList.add('active');
+		let steps = $('.step').slice(0, -1);
+		for(let step of steps) {
+			step.removeAttribute('id');
+		}
+		steps[active_slide_index].classList.add('active');
 		$$('insert-slide').style.display = 'block';
 		$$('remove-slide').style.display = 'block';
 		setTimeout( () => {
-			scroll.scroll2middle($('.step')[active_slide_index]);
+			scroll.scroll2middle(steps[active_slide_index]);
 		}, 500);
 	} else {
 		$$('impress-container').className = "none";
@@ -111,7 +115,6 @@ function update_step_style(ele) {
 	let attr = ele.id;
 	let active_slide = $('.style-active')[0] || $$('overview');
 	let data = parseFloat( ele.value );
-	console.log(data);
 	if( data ) {
 		if( attr !== 'data-width' ) {
 			active_slide.setAttribute(attr, ele.value);
