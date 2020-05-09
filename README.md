@@ -1,3 +1,3 @@
 # impressJs-learn
 
-[Document](https://github.com/jiandandaoxingfu/impressJs-learn/document.html)
+[Document](https://jiandandaoxingfu.github.io/impressJs-learn/document.html)
