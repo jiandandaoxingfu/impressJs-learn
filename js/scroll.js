@@ -1,17 +1,18 @@
 var scroll = {
 	timeStamp: 15,
-	scrollTimes: 10,
+	scrollTimes: 20,
 	isScroll: !0,
 
 	// 滚动页面，使焦点元素处在屏幕中央(竖直方向)
 	// ref: https://www.cnblogs.com/hjqbit/p/7260989.html
 	scroll2middle: function(ele) { 
 		if( !this.isScroll ) return;
+		let zoom = parseFloat( $('.step').css('zoom') );
 		var doc = $('.impress-editing')[0];	// 电脑端
 		var s = doc.scrollTop; 				// 网页被卷去部分的高
         var h1 = window.innerHeight; 		// 文档可视区的高度
-        var h2 = ele.clientHeight;			// 元素的高度
-        var off = this.getHeight(ele) * parseFloat( $('.step').css('zoom') ); 		// 元素距离文档顶部的距离
+        var h2 = ele.clientHeight * zoom;			// 元素的高度
+        var off = this.getHeight(ele) * zoom; 		// 元素距离文档顶部的距离
        	var addScroll = (off + h2/2) - (s + h1/2); 	// 元素中心高度与可视区域中心高度之差
 		if( addScroll + s < 0 ) { // 下滑到头
 			addScroll = - doc.scrollTop;
