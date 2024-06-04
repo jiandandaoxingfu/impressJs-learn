@@ -211,7 +211,7 @@ function styling_change_slide(slide) {
 document.addEventListener('click', e => {
 	let ele = e.target,
 		cn = ele.className || '',
-		slide_with_ele = e.path.slice(0, -4).filter( e => {
+		slide_with_ele = (e.composedPath ? e.composedPath() : e.path).slice(0, -4).filter( e => {
 			let cn = e.className.toString();
 			return cn.includes('step') && !cn.includes('active');
 		}),
