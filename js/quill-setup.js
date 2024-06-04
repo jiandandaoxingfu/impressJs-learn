@@ -176,7 +176,7 @@ function insert_formula() {
 // 双击数学公式，重新编辑
 document.addEventListener('dblclick', e => {
 	if( !window.is_edit ) return
-	let ql_formula = e.composedPath.slice(0, -4).filter( e => (e.className.toString() || '').includes('ql-formula') );
+	let ql_formula = (e.composedPath ? e.composedPath() : e.path).slice(0, -4).filter( e => (e.className.toString() || '').includes('ql-formula') );
 	if( ql_formula.length && ql_formula[0].tagName.toLowerCase() === "span" ) {
 		input_popup_change_view('formula-editor');
 		$$('input').focus();
@@ -216,7 +216,7 @@ function open_picker(picker) {
 }
 
 document.addEventListener('mousemove', e => {
-	let picker = e.composedPath.slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') ),
+	let picker = (e.composedPath ? e.composedPath() : e.path).slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') ),
 		cn = e.target.className.toString() || '',
 		tg = e.target.tagName.toLowerCase();
 
