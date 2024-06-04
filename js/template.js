@@ -12,28 +12,28 @@ const template =
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css">
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="js/jquery-3.4.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/jquery-3.4.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/bootstrap.min.js"></script>
 
     <!-- /*  impress    */ -->
-    <link href="css/impress-demo.css" rel="stylesheet" />
-    <link href="css/impress-common.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link href="https://jiandandaoxingfu.github.io/impressJs-learn/css/impress-demo.css" rel="stylesheet" />
+    <link href="https://jiandandaoxingfu.github.io/impressJs-learn/css/impress-common.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="https://jiandandaoxingfu.github.io/impressJs-learn/favicon.ico" />
     
     <!-- quill -->
-    <link href="css/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/monokai-sublime.css" />
+    <link href="https://jiandandaoxingfu.github.io/impressJs-learn/css/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://jiandandaoxingfu.github.io/impressJs-learn/css/index.css" />
+    <link rel="stylesheet" href="https://jiandandaoxingfu.github.io/impressJs-learn/css/monokai-sublime.css" />
 
-    <script src="js/highlight.pack.js"></script>
-    <script src="js/quill.min.js"></script>
-    <script src="js/image-resize.min.js"></script>
-    <script src="js/image-drop.min.js"></script>
+    <script src="https://jiandandaoxingfu.github.io/impressJs-learn/js/highlight.pack.js"></script>
+    <script src="https://jiandandaoxingfu.github.io/impressJs-learn/js/quill.min.js"></script>
+    <script src="https://jiandandaoxingfu.github.io/impressJs-learn/js/image-resize.min.js"></script>
+    <script src="https://jiandandaoxingfu.github.io/impressJs-learn/js/image-drop.min.js"></script>
 
-    <script type="text/javascript" src="js/template.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/impress-progress.css">
+    <script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/template.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jiandandaoxingfu.github.io/impressJs-learn/css/impress-progress.css">
 
-    <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/scroll.js"></script>
 
     <!-- MathJax -->
     <script type="text/x-mathjax-config">
@@ -181,10 +181,10 @@ const template =
         </div>
     </div>
 
-<script type="text/javascript" src="js/quill-setup.js"></script>
-<script type="text/javascript" src="js/edit.js"></script>
-<script type="text/javascript" src="js/key-event.js"></script>
-<script type="text/javascript" src="js/impress.js"></script>
+<script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/quill-setup.js"></script>
+<script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/edit.js"></script>
+<script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/key-event.js"></script>
+<script type="text/javascript" src="https://jiandandaoxingfu.github.io/impressJs-learn/js/impress.js"></script>
 <script>
     impress().init();
     impress().showPage();
