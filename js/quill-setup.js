@@ -216,7 +216,7 @@ function open_picker(picker) {
 }
 
 document.addEventListener('mousemove', e => {
-	let picker = e.path.slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') ),
+	let picker = e.composedPath.slice(0, -4).filter( ele => (ele.className.toString() || '').includes('ql-picker-label') ),
 		cn = e.target.className.toString() || '',
 		tg = e.target.tagName.toLowerCase();
 
